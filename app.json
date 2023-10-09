@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "QLNhaTro",
+    "slug": "QLNhaTro",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "344eb8db-cf40-459e-a0d8-29c71c2d17d3"
+      }
+    }
+  }
+}
