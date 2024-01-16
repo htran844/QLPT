@@ -10,6 +10,9 @@
       "eas": {
         "projectId": "344eb8db-cf40-459e-a0d8-29c71c2d17d3"
       }
+    },
+    "android": {
+      "package": "com.viethoang844.QLNhaTro"
     }
   }
 }
