@@ -145,8 +145,13 @@ const DetailRoom = ({ navigation, route }) => {
           onChangeText={(text) => {
             setPrice(text);
           }}
-          onBlur={() => {
-            setPrice(Number(price))
+          onBlur={()=>{
+            if (price.includes(".")) {
+              setPrice(Number(price.replace(/\./g, "")).toLocaleString())
+            } else{
+              setPrice(Number(price).toLocaleString())
+            }
+           
           }}
           keyboardType="numeric"
         />
