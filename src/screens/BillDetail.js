@@ -114,7 +114,7 @@ const BillDetail = ({ navigation, route }) => {
         Number(electricprice) * Number(electric) +
         Number(waterprice) * Number(water);
       console.log(" document!", numPrice, price_set);
-      setTotal(price_set.toLocaleString());
+      setTotal(price_set.toLocaleString('vi-VN'));
     }
     console.log("a", electricprice, waterprice);
   }, [electric, water]);
