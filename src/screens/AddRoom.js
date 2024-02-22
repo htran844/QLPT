@@ -124,9 +124,9 @@ const AddRoom = ({ navigation, route }) => {
           }}
           onBlur={()=>{
             if (price.includes(".")) {
-              setPrice(Number(price.replace(/\./g, "")).toLocaleString())
+              setPrice(Number(price.replace(/\./g, "")).toLocaleString('vi-VN'))
             } else{
-              setPrice(Number(price).toLocaleString())
+              setPrice(Number(price).toLocaleString('vi-VN'))
             }
            
           }}

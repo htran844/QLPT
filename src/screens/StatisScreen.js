@@ -102,7 +102,7 @@ const StatisScreen = () => {
                 data.reduce(
                   (accumulator, currentValue) => accumulator + currentValue
                 )
-              ).toLocaleString()
+              ).toLocaleString('vi-VN')
             }`}
             data={[
               { label: "2019", value: 2019 },
