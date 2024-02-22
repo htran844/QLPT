@@ -16,6 +16,7 @@ const AddRoom = ({ navigation, route }) => {
   const [date, setDate] = useState(new Date());
   const [rent_date, setRentdate] = useState(null);
   const [price, setPrice] = useState(null);
+  const [mota, setMota] = useState(null);
   useEffect(() => {
    setStatus(false)
   }, [status]);
@@ -47,6 +48,7 @@ const AddRoom = ({ navigation, route }) => {
       rent_date: rent_date,
       status: status,
       uid: uid,
+      mota: mota
     };
     console.log("dataset", dataSet);
     // return
@@ -129,6 +131,12 @@ const AddRoom = ({ navigation, route }) => {
            
           }}
           keyboardType="numeric"
+        />
+        <TextInput
+          multiline={true}
+          numberOfLines={10}
+          onChangeText={(text) => setMota(text)}
+          value={mota}
         />
         <Text style={{ color: "#4285F4", marginVertical: 10 }}>
           Chưa có thông tin có thể để trống

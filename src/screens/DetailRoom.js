@@ -18,6 +18,7 @@ const DetailRoom = ({ navigation, route }) => {
   const [price, setPrice] = useState(null);
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [mota, setMota] = useState(null);
   useEffect(() => {
     getRoomFireStore();
   }, []);
@@ -45,6 +46,7 @@ const DetailRoom = ({ navigation, route }) => {
             docSnap.data().date.nanoseconds / 1000000
         )
       );
+      setMota(docSnap.data().mota)
       setLoading(false);
     } else {
       // doc.data() will be undefined in this case
@@ -53,7 +55,7 @@ const DetailRoom = ({ navigation, route }) => {
     }
   };
   const updateRoom = async () => {
-    if ((date.getMonth() + 1) == 2 && Number(rent_date)>28 ) {
+    if (date.getMonth() + 1 == 2 && Number(rent_date) > 28) {
       Alert.alert("Thông báo", "invalid ngày thu tiền");
       return;
     }
@@ -69,6 +71,7 @@ const DetailRoom = ({ navigation, route }) => {
       price: price,
       rent_date: rent_date,
       status: status,
+      mota: mota
     };
     console.log("dataUpdate", dataUpdate);
     // Set the "capital" field of the city 'DC'
@@ -100,7 +103,7 @@ const DetailRoom = ({ navigation, route }) => {
           padding: 20,
         }}
       >
-         <TextInputCustom
+        <TextInputCustom
           title="Tình trạng"
           style={{ paddingVertical: 10, backgroundColor: "lightgray" }}
           value={room?.status ? "Đã thuê" : "Chưa thuê"}
@@ -145,15 +148,20 @@ const DetailRoom = ({ navigation, route }) => {
           onChangeText={(text) => {
             setPrice(text);
           }}
-          onBlur={()=>{
+          onBlur={() => {
             if (price.includes(".")) {
-              setPrice(Number(price.replace(/\./g, "")).toLocaleString())
-            } else{
-              setPrice(Number(price).toLocaleString())
+              setPrice(Number(price.replace(/\./g, "")).toLocaleString());
+            } else {
+              setPrice(Number(price).toLocaleString());
             }
-           
           }}
           keyboardType="numeric"
+        />
+        <TextInput
+          multiline={true}
+          numberOfLines={10}
+          onChangeText={(text) => setMota(text)}
+          value={mota}
         />
         <ButtonCustom
           title="Cập nhật thông tin phòng"
@@ -169,14 +177,22 @@ const DetailRoom = ({ navigation, route }) => {
           TouchableOpacityStyle={{ paddingVertical: 8 }}
           marginTop={30}
           onPress={() => {
-            navigation.navigate("Bill", { roomid: route.params.id, price: price });
+            navigation.navigate("Bill", {
+              roomid: route.params.id,
+              price: price,
+            });
           }}
         />
         <ButtonCustom
           title="Chi tiết người thuê"
           TouchableOpacityStyle={{ paddingVertical: 8 }}
           onPress={() => {
-            navigation.navigate("Tenants", { roomid: route.params.id, reLoad: ()=>{getRoomFireStore()} });
+            navigation.navigate("Tenants", {
+              roomid: route.params.id,
+              reLoad: () => {
+                getRoomFireStore();
+              },
+            });
           }}
         />
       </ScrollView>
