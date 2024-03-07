@@ -10,6 +10,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import db from "../firestore";
 import { ScrollView } from "react-native";
 import Loading from "../components/Loading";
+import { TextInput } from "react-native";
 
 const DetailRoom = ({ navigation, route }) => {
   const [status, setStatus] = useState(null);

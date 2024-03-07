@@ -9,6 +9,7 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 import db from "../firestore";
 import { getData } from "../asyncStore";
 import DateTimePickerComponent from "../components/DateTimePicker";
+import { TextInput } from "react-native";
 
 const AddRoom = ({ navigation, route }) => {
   const [name, setName] = useState(null);
